@@ -9,10 +9,9 @@
 
     <!-- Hakkında Ekranı -->
     <string name="hakkindaAd">İlk Sayfalar</string>
-    <string name="hakkindaVersiyon">Versiyon 1.0.1</string>
-    <string name="hakkindaYazi">Ulusal gazetelerin ilk/manşet sayfalarını kullanıcıya sunar ve kaydetme imkanı sağlar. Reklamsızdır, sadedir, az yer kaplar, hızlı çalışır.</string>
+    <string name="hakkindaVersiyon">Versiyon 1.1.1</string>
+    <string name="hakkindaYazi">Ulusal gazetelerin ilk/manşet sayfalarını kullanıcıya sunar ve kaydetme imkanı sağlar. Reklamsızdır, sadedir, az yer kaplar, sadece işini yapar, hızlı çalışır. Ayrıca açık kaynak kodludur.</string>
     <string name="hakkindaWebSite">Web Site</string>
     <string name="hakkindaPaylas">Paylaş</string>
-    <string name="menuAra">Ara</string>
     <string name="hakkindaIconBilgi">Hakkinda görseli için alan</string>
 </resources>

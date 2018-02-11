@@ -33,7 +33,7 @@ public class Hakkinda extends BaseActivity {
                 Intent paylas = new Intent(Intent.ACTION_SEND);
                 paylas.setType("text/plain");
                 paylas.putExtra(Intent.EXTRA_SUBJECT, "İlk Sayfalar");
-                paylas.putExtra(Intent.EXTRA_TEXT, "Her gün gazete manşetlerini görebildiğin İlk Sayfalar programını Google Play'den indirmeni öneriyorum.");
+                paylas.putExtra(Intent.EXTRA_TEXT, "Her gün gazete manşetlerini görebildiğin İlk Sayfalar programını Google Play'den (http://bit.ly/2srqke0) indirmeni öneriyorum.");
                 startActivity(Intent.createChooser(paylas, "Paylaş"));
             }
         });

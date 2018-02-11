@@ -1,6 +1,5 @@
 package com.umutd.ilksayfalar;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,7 +16,6 @@ public class GazeteOku extends BaseActivity {
 
     // Nesneleri oluştur
     private PhotoView pvGoruntule;
-    private ProgressDialog yuklenmeBilgisi;
 
     // Sınıfları oluştur
     private Gazeteler gazeteler;
@@ -31,7 +29,6 @@ public class GazeteOku extends BaseActivity {
     private void RegisterHandlers() {
         // Metotlar
         gazeteler = new Gazeteler();
-        yuklenmeBilgisi = new ProgressDialog(this);
 
         // Yükle
         gazeteler.gazeteLinkleri();
@@ -48,9 +45,7 @@ public class GazeteOku extends BaseActivity {
         inflater.inflate(R.menu.menu, menu);
 
         MenuItem takvimButonunuKaldir = menu.findItem(R.id.TarihSec);
-        MenuItem araButonunuKaldir = menu.findItem(R.id.Ara);
         takvimButonunuKaldir.setVisible(false);
-        araButonunuKaldir.setVisible(false);
         return true;
     }
 
@@ -66,10 +61,6 @@ public class GazeteOku extends BaseActivity {
         String gelenGazeteBilgisi = gelenBilgiler.getStringExtra("secilenGazete");
         String gelenTarihBilgisi = gelenBilgiler.getStringExtra("gununTarihi");
 
-        yuklenmeBilgisi.setTitle("İlk Sayfa Yükleniyor");
-        yuklenmeBilgisi.setMessage("Lütfen bekleyiniz...");
-        yuklenmeBilgisi.show();
-
         // Gazete adını başlığa yazdır
         setTitle(gelenGazeteBilgisi + " (" + gelenTarihBilgisi + ")");
 
@@ -78,14 +69,17 @@ public class GazeteOku extends BaseActivity {
         String secilenGazeteLinki = Gazeteler.INTERPRESS_ADRES + gelenTarihBilgisi + gelenGazeteAdi;
 
         Picasso.Builder picassoYukle = new Picasso.Builder(this);
+
+        // Picasso eklentisi ile görsel indirirken sorun yaşanırsa hata mesajı göster
         picassoYukle.listener(new Picasso.Listener() {
             @Override
             public void onImageLoadFailed(Picasso picasso, Uri uri, Exception exception) {
                 Snackbar.make(findViewById(android.R.id.content), "İstediğiniz İlk Sayfa maalesef yüklenemedi.", Snackbar.LENGTH_LONG).show();
             }
         });
+
+        // Picasso eklentisi ile görseli yükle
         picassoYukle.build().load(secilenGazeteLinki).error(R.drawable.ic_error_96dp).into(pvGoruntule);
-        yuklenmeBilgisi.dismiss();
     }
 }
 

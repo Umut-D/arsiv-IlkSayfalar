@@ -11,14 +11,19 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.umutd.ilksayfalar.Siniflar.BaglantiKontrol;
+import com.umutd.ilksayfalar.Siniflar.GazeteVeriModeli;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AnaEkran extends BaseActivity {
 
     // Nesneleri oluştur
     private ListView lstGazeteler;
-    private ArrayAdapter<String> gazetelerAdaptor;
+    List<GazeteVeriModeli> gazeteler;
 
     // Sınıfları oluştur
     private BaglantiKontrol baglantiKontrol;
@@ -32,21 +37,27 @@ public class AnaEkran extends BaseActivity {
     private void RegisterHandlers() {
         // Sınıflar
         baglantiKontrol = new BaglantiKontrol(this);
+        gazeteler = new ArrayList<>();
 
         // Metotlar
         lstGazeteler_Yukle();
     }
 
     private void lstGazeteler_Yukle() {
-        // Gazete dizisindeki değerleri alıp mevcut ListView'e yükle
-        gazetelerAdaptor = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.gazeteAdlari));
-        lstGazeteler.setAdapter(gazetelerAdaptor);
+        // Gazete dizisindeki değerleri alıp (Veri modeli de kullanarak) mevcut ListView'e yükle
+        for (String gazeteAdi : getResources().getStringArray(R.array.gazeteAdlari))
+            gazeteler.add(new GazeteVeriModeli("", gazeteAdi, ""));
+
+        CustomAdapter adapter = new CustomAdapter(this, gazeteler);
+        lstGazeteler.setAdapter(adapter);
 
         // Nesneye tıklandığında seçilen gazetenin adını belirle
         lstGazeteler.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String secilenGazete = lstGazeteler.getItemAtPosition(i).toString();
+                // Custom adapter'de seçilen gazete adını belirle ve değişkene aktar
+                TextView textView = view.findViewById(R.id.txtGazeteAdi);
+                String secilenGazete = textView.getText().toString();
 
                 // İnternet bağlantısı kontrolü yap
                 if (baglantiKontrol.BaglantiKontroluYap()) {
@@ -82,24 +93,6 @@ public class AnaEkran extends BaseActivity {
         // Sayfayı kaydet butonunu kaldır
         MenuItem sayfayiKaydetButonunuKaldir = menu.findItem(R.id.SayfayiKaydet);
         sayfayiKaydetButonunuKaldir.setVisible(false);
-
-        // Arama seçeneğini çağırarak arama yap
-        MenuItem item = menu.findItem(R.id.Ara);
-        SearchView searchView = (SearchView) item.getActionView();
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                return false;
-            }
-
-            // Aranan gazete adını bul ve filtrele
-            @Override
-            public boolean onQueryTextChange(String arananMetin) {
-                gazetelerAdaptor.getFilter().filter(arananMetin);
-                return false;
-            }
-        });
 
         // Menüyü ikinci defa yüklememek için true değeri ile dönüş yap
         return true;
