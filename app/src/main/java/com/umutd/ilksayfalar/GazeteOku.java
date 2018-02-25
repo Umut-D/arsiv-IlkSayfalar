@@ -1,12 +1,14 @@
 package com.umutd.ilksayfalar;
 
 import android.content.Intent;
-import android.net.Uri;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.github.chrisbanes.photoview.PhotoView;
 import com.squareup.picasso.Picasso;
@@ -16,6 +18,7 @@ public class GazeteOku extends BaseActivity {
 
     // Nesneleri oluştur
     private PhotoView pvGoruntule;
+    ProgressBar pBarYuklemeCubugu;
 
     // Sınıfları oluştur
     private Gazeteler gazeteler;
@@ -23,6 +26,7 @@ public class GazeteOku extends BaseActivity {
     // Nesneleri oluşturma fonksiyonu
     private void init() {
         pvGoruntule = findViewById(R.id.pvGoruntule);
+        pBarYuklemeCubugu = findViewById(R.id.pBarYuklemeCubugu);
     }
 
     // Eylemleri oluşturma fonksiyonu
@@ -68,19 +72,28 @@ public class GazeteOku extends BaseActivity {
         String gelenGazeteAdi = gazeteler.gazetelerMap.get(gelenGazeteBilgisi);
         String secilenGazeteLinki = Gazeteler.INTERPRESS_ADRES + gelenTarihBilgisi + gelenGazeteAdi;
 
-        Picasso.Builder picassoYukle = new Picasso.Builder(this);
-
-        // Picasso eklentisi ile görsel indirirken sorun yaşanırsa hata mesajı göster
-        picassoYukle.listener(new Picasso.Listener() {
-            @Override
-            public void onImageLoadFailed(Picasso picasso, Uri uri, Exception exception) {
-                Snackbar.make(findViewById(android.R.id.content), "İstediğiniz İlk Sayfa maalesef yüklenemedi.", Snackbar.LENGTH_LONG).show();
-            }
-        });
+        // Yüklenme çubuğunu, görsel yüklenenene kadar göstermeye başla
+        pBarYuklemeCubugu.setVisibility(View.VISIBLE);
+        // Yüklenme çubuğunun rengini menü çubuğunun rengi olarak ayarla
+        pBarYuklemeCubugu.getIndeterminateDrawable().setColorFilter(Color.parseColor("#3F51B5"), android.graphics.PorterDuff.Mode.MULTIPLY);
 
         // Picasso eklentisi ile görseli yükle
-        picassoYukle.build().load(secilenGazeteLinki).error(R.drawable.ic_error_96dp).into(pvGoruntule);
+        Picasso.with(this).load(secilenGazeteLinki).into(pvGoruntule, new com.squareup.picasso.Callback() {
+            // Eğer yükleme başarılı olursa, görsel yüklenmeden önce gösterilen yükleme çubuğunu kaldır
+            @Override
+            public void onSuccess() {
+                if (pBarYuklemeCubugu != null) {
+                    pBarYuklemeCubugu.setVisibility(View.GONE);
+                }
+            }
+
+            // Picasso eklentisi ile görsel indirirken sorun yaşanırsa hata mesajı göster ve yükleme çubuğunu iptal et
+            @Override
+            public void onError() {
+                Snackbar.make(findViewById(android.R.id.content), "İstediğiniz İlk Sayfa maalesef yüklenemedi.", Snackbar.LENGTH_LONG).show();
+                pBarYuklemeCubugu.setVisibility(View.GONE);
+                Picasso.with(getApplicationContext()).load("").error(R.drawable.ic_error_96dp).into(pvGoruntule);
+            }
+        });
     }
 }
-
-

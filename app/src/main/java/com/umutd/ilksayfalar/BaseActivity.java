@@ -145,8 +145,8 @@ public class BaseActivity extends AppCompatActivity {
             BitmapDrawable bitmapNesnesi = (BitmapDrawable) pvGoruntule.getDrawable();
             Bitmap bitmapGoruntusu = bitmapNesnesi.getBitmap();
 
+            // Mevcut dizine kaydet
             File hariciKartBilgisi = Environment.getExternalStorageDirectory();
-
             File klasor = new File(hariciKartBilgisi.getAbsolutePath() + "/IlkSayfalarKaydedilenler");
 
             // IlkSayfalarKaydedilenler klasörü mevcut mu?
