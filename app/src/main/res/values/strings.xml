@@ -9,7 +9,7 @@
 
     <!-- Hakkında Ekranı -->
     <string name="hakkindaAd">İlk Sayfalar</string>
-    <string name="hakkindaVersiyon">Versiyon 1.2</string>
+    <string name="hakkindaVersiyon">Versiyon 1.3</string>
     <string name="hakkindaYazi">Ulusal gazetelerin ilk/manşet sayfalarını kullanıcıya sunar ve kaydetme imkanı sağlar. Reklamsızdır, sadedir, az yer kaplar, sadece işini yapar, hızlı çalışır. Ayrıca açık kaynak kodludur.</string>
     <string name="hakkindaWebSite">Web Site</string>
     <string name="hakkindaPaylas">Paylaş</string>

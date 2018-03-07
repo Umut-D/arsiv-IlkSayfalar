@@ -1,12 +1,11 @@
 package com.umutd.ilksayfalar.Siniflar;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.LinkedHashMap;
 
 // Tüm gazetelerin temel linklerinin bulunduğu sınıf
 public class Gazeteler {
 
-    public final Map<String, String> gazetelerMap = new HashMap<>();
+    public final LinkedHashMap<String, String> gazetelerMap = new LinkedHashMap<>();
     public static final String INTERPRESS_ADRES = "https://www.interpress.com/gazeteler/";
 
     // Gazetelerin Ad/Temel Link ikililerini gazetelerMap koleksiyonuna ekle
@@ -36,7 +35,7 @@ public class Gazeteler {
         gazetelerMap.put("Star", "/420_STAR_1.jpg");
         gazetelerMap.put("Takvim", "/403_TAKVIM_1.jpg");
         gazetelerMap.put("Türkiye", "/424_TURKIYE_1.jpg");
-        gazetelerMap.put("Türkiye'de Yeni Çağ", "/215_TURKIYE'DE_YENI_CAG_1.jpg");
+        gazetelerMap.put("Türkiye'de Yeni Çağ", "/215_TURKIYE\'DE_YENI_CAG_1.jpg");
         gazetelerMap.put("Vatan", "/402_VATAN_1.jpg");
         gazetelerMap.put("Yeni Akit", "/8638_YENI_AKIT_1.jpg");
         gazetelerMap.put("Yeni Asya", "/437_YENI_ASYA_1.jpg");

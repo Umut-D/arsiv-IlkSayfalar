@@ -12,7 +12,7 @@ public class GazeteVeriModeli {
         this.durum = durum;
     }
 
-    // Uzun vadeli bir hedef için bu burada kalacak
+    // Uzun vadeli bir hedef (arama fonksiyonu) için bu burada kalacak
     public String getBasHarf() {
         return basHarf;
     }

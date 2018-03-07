@@ -39,14 +39,16 @@ public class BaseActivity extends AppCompatActivity {
     private int yil;
     private int ay;
     private int gun;
-    private final int STORAGE_PERMISSION_CODE = 1;
-    String gununTarihi;
     private String secilenAy;
     private String secilenGun;
+    String gununTarihi;
+
+    // Sınıfları oluştur
     private FileOutputStream dosyaCikisStream;
     private File dosyaAdi;
+    private final int STORAGE_PERMISSION_CODE = 1;
 
-    // Menüyü oluşturma Fonksiyonu (1)
+    // Menü oluşturma Fonksiyonu (1)
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -54,7 +56,7 @@ public class BaseActivity extends AppCompatActivity {
         return true;
     }
 
-    // Menüyü oluşturma Fonksiyonu (2)
+    // Menü oluşturma Fonksiyonu (2)
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Eyleme göre işlem yap
@@ -86,7 +88,7 @@ public class BaseActivity extends AppCompatActivity {
         tarihBelirle();
     }
 
-    // Kullanıcıdan eposta geri dönüşü almak için gerekli fonksiyon
+    // Kullanıcıdan eposta geri dönüşü almak için gerekli fonksiyon (Zamanla ayrı bir sınıfa al)
     private void HataBildir() {
         Intent emailGonder = new Intent(Intent.ACTION_SEND);
         emailGonder.setType("plain/text");

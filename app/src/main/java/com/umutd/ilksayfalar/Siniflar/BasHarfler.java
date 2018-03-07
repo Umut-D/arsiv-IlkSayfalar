@@ -7,6 +7,7 @@ import com.amulyakhare.textdrawable.TextDrawable;
 // Gazetelerin baş harflerine göre renklendirme yapan sınıf
 public class BasHarfler {
 
+    // Sınıf oluştur
     private TextDrawable drawable;
 
     // Gönderilen baş harfe göre gerekli baş harf ve materyal renk değerini döndür

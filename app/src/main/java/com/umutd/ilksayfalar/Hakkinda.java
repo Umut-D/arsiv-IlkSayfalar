@@ -53,7 +53,7 @@ public class Hakkinda extends BaseActivity {
         });
     }
 
-    // Üst menüyü göstermeme opsiyonu
+    // Üst menüyü göstermeme opsiyonu (Ne gerek var bu ekranda)
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         menu.setGroupVisible(0, false);

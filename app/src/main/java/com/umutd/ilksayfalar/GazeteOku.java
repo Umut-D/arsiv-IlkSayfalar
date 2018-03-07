@@ -1,44 +1,48 @@
 package com.umutd.ilksayfalar;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
+import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ProgressBar;
 
 import com.github.chrisbanes.photoview.PhotoView;
-import com.squareup.picasso.Picasso;
+import com.umutd.ilksayfalar.Adapterler.ViewPagerAdapter;
 import com.umutd.ilksayfalar.Siniflar.Gazeteler;
+import com.umutd.ilksayfalar.Siniflar.TarihFormati;
+
+import java.util.ArrayList;
 
 public class GazeteOku extends BaseActivity {
 
-    // Nesneleri oluştur
-    private PhotoView pvGoruntule;
-    ProgressBar pBarYuklemeCubugu;
+    // Değişkenleri oluştur
+    String[] gununGazeteGorselAdresleri;
+    String yeniTarihDegeri;
 
     // Sınıfları oluştur
     private Gazeteler gazeteler;
+    private TarihFormati tarihFormati;
+
+    // Nesneleri oluştur
+    PhotoView pvGoruntule;
+    ViewPager viewPagerGorunumu;
+    ViewPagerAdapter adapterGorunumu;
 
     // Nesneleri oluşturma fonksiyonu
     private void init() {
         pvGoruntule = findViewById(R.id.pvGoruntule);
-        pBarYuklemeCubugu = findViewById(R.id.pBarYuklemeCubugu);
+        viewPagerGorunumu = findViewById(R.id.viewPager);
     }
 
     // Eylemleri oluşturma fonksiyonu
     private void RegisterHandlers() {
-        // Metotlar
+        // Yapıcı Metotlar
         gazeteler = new Gazeteler();
+        tarihFormati = new TarihFormati();
 
         // Yükle
         gazeteler.gazeteLinkleri();
-
-        // Photoview Zoom seviyesini arttır
-        pvGoruntule.setMaximumScale(10);
     }
 
     // Menü oluşturma metodunu ezerek arama ve tarih seç butonlarını bu ekrandan çıkar
@@ -65,35 +69,23 @@ public class GazeteOku extends BaseActivity {
         String gelenGazeteBilgisi = gelenBilgiler.getStringExtra("secilenGazete");
         String gelenTarihBilgisi = gelenBilgiler.getStringExtra("gununTarihi");
 
-        // Gazete adını başlığa yazdır
-        setTitle(gelenGazeteBilgisi + " (" + gelenTarihBilgisi + ")");
+        // Gelen gazete bilgisini alarak hangi gazetenin gösterileceğinin indeks numarasını belirle
+        int sira = new ArrayList<>(gazeteler.gazetelerMap.keySet()).indexOf(gelenGazeteBilgisi);
 
-        // Gelen bilgileri alarak adreste birleştirme yap
-        String gelenGazeteAdi = gazeteler.gazetelerMap.get(gelenGazeteBilgisi);
-        String secilenGazeteLinki = Gazeteler.INTERPRESS_ADRES + gelenTarihBilgisi + gelenGazeteAdi;
+        gununGazeteGorselAdresleri = new String[gazeteler.gazetelerMap.size()];
 
-        // Yüklenme çubuğunu, görsel yüklenenene kadar göstermeye başla
-        pBarYuklemeCubugu.setVisibility(View.VISIBLE);
-        // Yüklenme çubuğunun rengini menü çubuğunun rengi olarak ayarla
-        pBarYuklemeCubugu.getIndeterminateDrawable().setColorFilter(Color.parseColor("#3F51B5"), android.graphics.PorterDuff.Mode.MULTIPLY);
+        // İstenen günün tüm gazetelerinin tam linklerini oluşturarak ilgili diziye aktar (ViewPager için)
+        for (int i = 0; i < gazeteler.gazetelerMap.size(); i++) {
+            gununGazeteGorselAdresleri[i] = Gazeteler.INTERPRESS_ADRES + gelenTarihBilgisi + (new ArrayList<>(gazeteler.gazetelerMap.values())).get(i);
+        }
 
-        // Picasso eklentisi ile görseli yükle
-        Picasso.with(this).load(secilenGazeteLinki).into(pvGoruntule, new com.squareup.picasso.Callback() {
-            // Eğer yükleme başarılı olursa, görsel yüklenmeden önce gösterilen yükleme çubuğunu kaldır
-            @Override
-            public void onSuccess() {
-                if (pBarYuklemeCubugu != null) {
-                    pBarYuklemeCubugu.setVisibility(View.GONE);
-                }
-            }
+        // Günün de yazılı olduğu tarih değerini, ilgili metot sayesinde dönüştür ve al
+        yeniTarihDegeri = tarihFormati.TarihFormatiDegistir(gelenTarihBilgisi);
 
-            // Picasso eklentisi ile görsel indirirken sorun yaşanırsa hata mesajı göster ve yükleme çubuğunu iptal et
-            @Override
-            public void onError() {
-                Snackbar.make(findViewById(android.R.id.content), "İstediğiniz İlk Sayfa maalesef yüklenemedi.", Snackbar.LENGTH_LONG).show();
-                pBarYuklemeCubugu.setVisibility(View.GONE);
-                Picasso.with(getApplicationContext()).load("").error(R.drawable.ic_error_96dp).into(pvGoruntule);
-            }
-        });
+        // ViewPager adaptörüne gerekli diziyi gönder ve istenen gazete indeksini görüntüle
+        adapterGorunumu = new ViewPagerAdapter(GazeteOku.this, gununGazeteGorselAdresleri, gelenGazeteBilgisi, yeniTarihDegeri);
+        viewPagerGorunumu.setAdapter(adapterGorunumu);
+        viewPagerGorunumu.setCurrentItem(sira);
     }
+
 }

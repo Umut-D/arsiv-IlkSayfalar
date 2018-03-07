@@ -3,16 +3,15 @@ package com.umutd.ilksayfalar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
-import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.umutd.ilksayfalar.Adapterler.CustomAdapter;
 import com.umutd.ilksayfalar.Siniflar.BaglantiKontrol;
 import com.umutd.ilksayfalar.Siniflar.GazeteVeriModeli;
 
@@ -28,7 +27,7 @@ public class AnaEkran extends BaseActivity {
     // Sınıfları oluştur
     private BaglantiKontrol baglantiKontrol;
 
-    // Nesneleri oluşturma fonksiyonu
+    // Nesneleri birbirine bağla
     private void init() {
         lstGazeteler = findViewById(R.id.lstGazeteler);
     }
@@ -48,6 +47,7 @@ public class AnaEkran extends BaseActivity {
         for (String gazeteAdi : getResources().getStringArray(R.array.gazeteAdlari))
             gazeteler.add(new GazeteVeriModeli("", gazeteAdi, ""));
 
+        // Custom Listview için özel adaptör sınıfını çağır ve Custom Listview yükle
         CustomAdapter adapter = new CustomAdapter(this, gazeteler);
         lstGazeteler.setAdapter(adapter);
 
@@ -84,7 +84,6 @@ public class AnaEkran extends BaseActivity {
         RegisterHandlers();
     }
 
-    // ListView'de arama yapılmasına izin ver
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
