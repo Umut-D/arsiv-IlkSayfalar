@@ -1,17 +1,9 @@
 <resources>
     <string name="app_name">İlk Sayfalar</string>
 
-    <!-- Menü adları -->
+    <!-- Menü/Seçenek adları -->
     <string name="tarihSec">Tarih Seç</string>
     <string name="sayfayiKaydet">Sayfayı Kaydet</string>
-    <string name="hataBildir">Hata Bildir</string>
-    <string name="hakkinda">Hakkında</string>
+    <string name="ayarlar">Ayarlar</string>
 
-    <!-- Hakkında Ekranı -->
-    <string name="hakkindaAd">İlk Sayfalar</string>
-    <string name="hakkindaVersiyon">Versiyon 1.3</string>
-    <string name="hakkindaYazi">Ulusal gazetelerin ilk/manşet sayfalarını kullanıcıya sunar ve kaydetme imkanı sağlar. Reklamsızdır, sadedir, az yer kaplar, sadece işini yapar, hızlı çalışır. Ayrıca açık kaynak kodludur.</string>
-    <string name="hakkindaWebSite">Web Site</string>
-    <string name="hakkindaPaylas">Paylaş</string>
-    <string name="hakkindaIconBilgi">Hakkinda görseli için alan</string>
 </resources>

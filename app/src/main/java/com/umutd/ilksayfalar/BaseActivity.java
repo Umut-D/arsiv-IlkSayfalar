@@ -23,6 +23,8 @@ import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.umutd.ilksayfalar.Ayarlar.AyarlarActivity;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -70,12 +72,9 @@ public class BaseActivity extends AppCompatActivity {
             case R.id.TarihSec:
                 tarihSecimEkraniAc();
                 break;
-            case R.id.HataBildir:
-                HataBildir();
-                break;
-            case R.id.Hakkinda:
-                Intent hakkindaEkraninGec = new Intent(this, Hakkinda.class);
-                startActivity(hakkindaEkraninGec);
+            case R.id.Ayarlar:
+                Intent AyarlarEkraninGec = new Intent(this, AyarlarActivity.class);
+                startActivity(AyarlarEkraninGec);
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -86,16 +85,6 @@ public class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
         tarihBelirle();
-    }
-
-    // Kullanıcıdan eposta geri dönüşü almak için gerekli fonksiyon (Zamanla ayrı bir sınıfa al)
-    private void HataBildir() {
-        Intent emailGonder = new Intent(Intent.ACTION_SEND);
-        emailGonder.setType("plain/text");
-        emailGonder.putExtra(Intent.EXTRA_EMAIL, new String[]{"batu2k@gmail.com"});
-        emailGonder.putExtra(Intent.EXTRA_SUBJECT, "Ilk Sayfalar Programına dair");
-        emailGonder.putExtra(Intent.EXTRA_TEXT, "Programda şöyle hata var sanki: ");
-        startActivity(Intent.createChooser(emailGonder, "Şu programı kullanarak e-posta gönder"));
     }
 
     // Mevcut günün tarihini belirle ve gerekli formata sok

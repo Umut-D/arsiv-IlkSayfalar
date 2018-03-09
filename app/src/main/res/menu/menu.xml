@@ -11,11 +11,7 @@
         android:title="@string/sayfayiKaydet"
         app:showAsAction="never" />
     <item
-        android:id="@+id/HataBildir"
-        android:title="@string/hataBildir"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/Hakkinda"
-        android:title="@string/hakkinda"
+        android:id="@+id/Ayarlar"
+        android:title="@string/ayarlar"
         app:showAsAction="never" />
 </menu>

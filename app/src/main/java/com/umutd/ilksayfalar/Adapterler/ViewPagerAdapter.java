@@ -12,11 +12,6 @@ import android.widget.ProgressBar;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.squareup.picasso.Picasso;
 import com.umutd.ilksayfalar.R;
-import com.umutd.ilksayfalar.Siniflar.Gazeteler;
-
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 
 // ViewPager (sağa sola kaydırma yaparak gazeteleri görüntüleme) için oluşturulan özel ViewPager sınıfı
 public class ViewPagerAdapter extends PagerAdapter {

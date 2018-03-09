@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CLEAR_APP_CACHE" />
 
     <application
         android:allowBackup="false"
@@ -21,8 +22,10 @@
             <!-- DeepLink intent filter (Google indeksleme için istiyor) -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data
                     android:host="www.umut.com"
                     android:pathPrefix="/ilk-sayfalar"
@@ -32,12 +35,12 @@
 
         </activity>
         <activity
-            android:name=".Hakkinda"
-            android:parentActivityName=".AnaEkran" />
-        <activity
             android:name=".GazeteOku"
             android:parentActivityName=".AnaEkran" />
         <activity android:name=".BaseActivity" />
+        <activity
+            android:name=".Ayarlar.AyarlarActivity"
+            android:parentActivityName=".AnaEkran" />
     </application>
 
 </manifest>

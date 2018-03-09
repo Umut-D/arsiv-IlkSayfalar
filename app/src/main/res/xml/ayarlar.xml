@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="Genel">
+        <Preference
+            android:key="keyTemizle"
+            android:summary="Ara ara önbellek temizliği yapmak iyidir, hoştur"
+            android:title="Önbelleği Temizle" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Hakkında">
+
+        <Preference
+            android:selectable="false"
+            android:summary="Ulusal gazetelerin ilk/manşet sayfalarını kullanıcıya sunar ve kaydetme imkanı sağlar. Reklamsızdır, sadedir, az yer kaplar, sadece işini yapar, hızlı çalışır ve açık kaynak kodludur" />
+
+        <Preference
+            android:summary="1.4"
+            android:title="Versiyon" />
+
+        <Preference
+            android:key="keyPaylas"
+            android:title="Uygulamayı paylaş" />
+
+        <Preference
+            android:key="keyOylamaYap"
+            android:title="Uygulamayı Google Play'de oyla" />
+
+        <Preference android:title="Kaynak kodları (Github)">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/Umut-D/IlkSayfalar" />
+        </Preference>
+
+        <Preference
+            android:key="keyHataBildir"
+            android:title="Hata Bildir" />
+
+        <Preference
+            android:summary="Umut D."
+            android:title="Geliştirici">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="http://www.umutd.com" />
+        </Preference>
+    </PreferenceCategory>
+</PreferenceScreen>
