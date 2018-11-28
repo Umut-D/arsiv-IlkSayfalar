@@ -2,38 +2,28 @@
 <resources>
     <string-array name="gazeteAdlari">
         <item>Akşam</item>
+        <item>AMK</item>
+        <item>Anayurt</item>
         <item>Aydınlık</item>
-        <item>Ayrıntılı Haber</item>
-        <item>BirGün</item>
         <item>Cumhuriyet</item>
-        <item>Diriliş Postası</item>
+        <item>Doğru Haber</item>
         <item>Dünya</item>
-        <item>Fanatik</item>
-        <item>Fotomaç</item>
+        <item>Evrensel</item>
         <item>Güneş</item>
-        <item>Günlük Evrensel</item>
-        <item>HaberTürk</item>
-        <item>Hürriyet</item>
+        <item>Harbi</item>
+        <item>İstiklal</item>
         <item>Karar</item>
+        <item>Korkusuz</item>
         <item>Milat</item>
         <item>Milli Gazete</item>
-        <item>Milliyet</item>
         <item>Ortadoğu</item>
-        <item>Önce Vatan</item>
-        <item>Posta</item>
-        <item>Sabah</item>
         <item>Sözcü</item>
         <item>Star</item>
-        <item>Takvim</item>
         <item>Türkiye</item>
-        <item>Türkiye\'de Yeni Çağ</item>
-        <item>Vatan</item>
         <item>Yeni Akit</item>
         <item>Yeni Asya</item>
-        <item>Yeni Birlik</item>
+        <item>Yeniçağ</item>
         <item>Yeni Mesaj</item>
-        <item>Yeni Söz</item>
         <item>Yeni Şafak</item>
-        <item>Yurt</item>
     </string-array>
 </resources>

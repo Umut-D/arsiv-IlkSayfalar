@@ -12,10 +12,10 @@
 
         <Preference
             android:selectable="false"
-            android:summary="Ulusal gazetelerin ilk/manşet sayfalarını kullanıcıya sunar ve kaydetme imkanı sağlar. Reklamsızdır, sadedir, az yer kaplar, sadece işini yapar, hızlı çalışır ve açık kaynak kodludur" />
+            android:summary="Ulusal gazetelerin ilk/manşet sayfalarını kullanıcıya sunar ve kaydetme imkanı sağlar. Reklamsızdır, sadedir, az yer kaplar, sadece işini yapar, hızlı çalışır ve açık kaynak kodludur." />
 
         <Preference
-            android:summary="1.4"
+            android:summary="1.5"
             android:title="Versiyon" />
 
         <Preference

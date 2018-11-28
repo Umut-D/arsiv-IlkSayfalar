@@ -26,14 +26,17 @@ public class BasHarfler {
             case "D":
                 drawable = TextDrawable.builder().buildRound("D", Color.parseColor("#64dd17"));
                 break;
-            case "F":
-                drawable = TextDrawable.builder().buildRound("F", Color.parseColor("#c51162"));
+            case "E":
+                drawable = TextDrawable.builder().buildRound("E", Color.parseColor("#c51162"));
                 break;
             case "G":
                 drawable = TextDrawable.builder().buildRound("G", Color.parseColor("#2962ff"));
                 break;
             case "H":
                 drawable = TextDrawable.builder().buildRound("H", Color.parseColor("#00c853"));
+                break;
+            case "İ":
+                drawable = TextDrawable.builder().buildRound("İ", Color.parseColor("#aa00ff"));
                 break;
             case "K":
                 drawable = TextDrawable.builder().buildRound("K", Color.parseColor("#3e2723"));
@@ -43,9 +46,6 @@ public class BasHarfler {
                 break;
             case "O":
                 drawable = TextDrawable.builder().buildRound("O", Color.parseColor("#263238"));
-                break;
-            case "Ö":
-                drawable = TextDrawable.builder().buildRound("Ö", Color.parseColor("#aa00ff"));
                 break;
             case "P":
                 drawable = TextDrawable.builder().buildRound("P", Color.parseColor("#dd2c00"));

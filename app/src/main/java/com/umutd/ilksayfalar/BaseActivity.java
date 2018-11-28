@@ -94,7 +94,7 @@ public class BaseActivity extends AppCompatActivity {
         ay = tarih.get(Calendar.MONTH);
         gun = tarih.get(Calendar.DAY_OF_MONTH);
 
-        DateFormat tarihFormati = new SimpleDateFormat("dd.MM.yyyy", Locale.ROOT);
+        DateFormat tarihFormati = new SimpleDateFormat("/yyyy/MM/dd", Locale.ROOT);
         gununTarihi = tarihFormati.format(tarih.getTime());
     }
 
@@ -113,8 +113,8 @@ public class BaseActivity extends AppCompatActivity {
                 else
                     secilenGun = String.valueOf(gunSec);
 
-                gununTarihi = (secilenGun + "." + secilenAy + "." + yilSec);
-                setTitle("İlk Sayfalar (" + gununTarihi + ")");
+                gununTarihi = ("/" + yilSec + "/" + secilenAy + "/" + secilenGun );
+                setTitle("İlk Sayfalar (" + gununTarihi.substring(1) + ")");
             }
         }, yil, ay, gun);
 

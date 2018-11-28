@@ -19,6 +19,7 @@ public class GazeteOku extends BaseActivity {
     // Değişkenleri oluştur
     String[] gununGazeteGorselAdresleri;
     String yeniTarihDegeri;
+    String gelenGazeteBilgisi;
 
     // Sınıfları oluştur
     private Gazeteler gazeteler;
@@ -52,6 +53,8 @@ public class GazeteOku extends BaseActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
 
+        setTitle(gelenGazeteBilgisi);
+
         MenuItem takvimButonunuKaldir = menu.findItem(R.id.TarihSec);
         takvimButonunuKaldir.setVisible(false);
         return true;
@@ -66,7 +69,7 @@ public class GazeteOku extends BaseActivity {
 
         // Seçilen ve gönderilen gazete bilgisi al
         Intent gelenBilgiler = getIntent();
-        String gelenGazeteBilgisi = gelenBilgiler.getStringExtra("secilenGazete");
+        gelenGazeteBilgisi = gelenBilgiler.getStringExtra("secilenGazete");
         String gelenTarihBilgisi = gelenBilgiler.getStringExtra("gununTarihi");
 
         // Gelen gazete bilgisini alarak hangi gazetenin gösterileceğinin indeks numarasını belirle
@@ -76,7 +79,7 @@ public class GazeteOku extends BaseActivity {
 
         // İstenen günün tüm gazetelerinin tam linklerini oluşturarak ilgili diziye aktar (ViewPager için)
         for (int i = 0; i < gazeteler.gazetelerMap.size(); i++) {
-            gununGazeteGorselAdresleri[i] = Gazeteler.INTERPRESS_ADRES + gelenTarihBilgisi + (new ArrayList<>(gazeteler.gazetelerMap.values())).get(i);
+            gununGazeteGorselAdresleri[i] = Gazeteler.HABERLERCOM + (new ArrayList<>(gazeteler.gazetelerMap.values())).get(i) + gelenTarihBilgisi + (new ArrayList<>(gazeteler.gazetelerMap.values())).get(i) + ".jpg";
         }
 
         // Günün de yazılı olduğu tarih değerini, ilgili metot sayesinde dönüştür ve al
