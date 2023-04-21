@@ -1,6 +1,7 @@
-# İlk Sayfalar
+# İlk Sayfalar (Durum: Archived)
+**Bu depo arşivlenmiştir ve artık geliştirmesi yapılmamaktadır.**
 
-<img src="https://img.shields.io/badge/Lisans-GPL-blue.svg?style=flat" alt="Lisans" /> <img src="https://img.shields.io/badge/Durum-Devam Ediyor-yellow.svg?style=flat" alt="Devam Ediyor" /> <img src="https://img.shields.io/badge/Versiyon-1.5-green.svg?style=flat" alt="Versiyon" />
+![Durum: Aktif Değil](https://img.shields.io/badge/status-inactive-red.svg) <img src="https://img.shields.io/badge/Lisans-GPL-blue.svg?style=flat" alt="Lisans" /> <img src="https://img.shields.io/badge/Versiyon-1.5-green.svg?style=flat" alt="Versiyon" />
 
 İlk Sayfalar, Türkiye’de günlük yayın yapan ulusal gazetelerin ilk sayfalarını görmeyi ve okuyabilmeyi sağlayan bir programdır.
 
